@@ -2,7 +2,7 @@ package me.adanchou.utils;
 
 import android.os.SystemClock;
 
-import org.wordpress.android.util.AppLog.T;
+import me.adanchou.utils.AppLog.T;
 
 import java.util.ArrayList;
 

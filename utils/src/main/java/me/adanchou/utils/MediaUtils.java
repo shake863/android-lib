@@ -10,8 +10,6 @@ import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.webkit.MimeTypeMap;
 
-import org.wordpress.android.util.AppLog.T;
-
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -199,7 +197,7 @@ public class MediaUtils {
             if (imageUri.toString().startsWith("content://")) {
                 input = context.getContentResolver().openInputStream(imageUri);
                 if (input == null) {
-                    AppLog.e(T.UTILS, "openInputStream returned null");
+                    AppLog.e(AppLog.T.UTILS, "openInputStream returned null");
                     return null;
                 }
             } else {
@@ -227,11 +225,11 @@ public class MediaUtils {
 
             return Uri.fromFile(f);
         } catch (FileNotFoundException e) {
-            AppLog.e(T.UTILS, e);
+            AppLog.e(AppLog.T.UTILS, e);
         } catch (MalformedURLException e) {
-            AppLog.e(T.UTILS, e);
+            AppLog.e(AppLog.T.UTILS, e);
         } catch (IOException e) {
-            AppLog.e(T.UTILS, e);
+            AppLog.e(AppLog.T.UTILS, e);
         }
 
         return null;

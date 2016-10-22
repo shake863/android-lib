@@ -5,7 +5,7 @@ import android.text.TextUtils;
 import android.webkit.MimeTypeMap;
 import android.webkit.URLUtil;
 
-import org.wordpress.android.util.AppLog.T;
+import me.adanchou.utils.AppLog.T;
 
 import java.io.UnsupportedEncodingException;
 import java.net.IDN;

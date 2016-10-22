@@ -5,7 +5,7 @@ import android.accounts.AccountManager;
 import android.content.Context;
 import android.util.Patterns;
 
-import org.wordpress.android.util.AppLog.T;
+import me.adanchou.utils.AppLog.T;
 
 import java.util.regex.Pattern;
 

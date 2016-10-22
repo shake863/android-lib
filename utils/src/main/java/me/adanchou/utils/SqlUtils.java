@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDoneException;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteStatement;
 
-import org.wordpress.android.util.AppLog.T;
+import me.adanchou.utils.AppLog.T;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -5,7 +5,7 @@ import android.support.annotation.StringRes;
 import android.text.Html;
 import android.text.TextUtils;
 
-import org.wordpress.android.util.AppLog.T;
+import me.adanchou.utils.AppLog.T;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
