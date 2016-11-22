@@ -24,7 +24,7 @@ public final class GeocoderUtils {
         try {
             gcd = new Geocoder(context, LanguageUtils.getCurrentDeviceLanguage(context));
         } catch (NullPointerException cannotIstantiateEx) {
-            AppLog.e(AppLog.T.UTILS, "Cannot instantiate Geocoder", cannotIstantiateEx);
+            AppLog.e(AppLog.UTILS, "Cannot instantiate Geocoder", cannotIstantiateEx);
             return null;
         }
 
@@ -46,7 +46,7 @@ public final class GeocoderUtils {
         } catch (IOException e) {
             // may get "Unable to parse response from server" IOException here if Geocoder
             // service is hit too frequently
-            AppLog.e(AppLog.T.UTILS,
+            AppLog.e(AppLog.UTILS,
                     "Unable to parse response from server. Is Geocoder service hitting the server too frequently?",
                     e
             );
@@ -74,7 +74,7 @@ public final class GeocoderUtils {
         try {
             addresses = gcd.getFromLocationName(locationName, maxResults);
         } catch (IOException e) {
-            AppLog.e(AppLog.T.UTILS, "Failed to get coordinates from location", e);
+            AppLog.e(AppLog.UTILS, "Failed to get coordinates from location", e);
         }
 
         // addresses may be null or empty if network isn't connected

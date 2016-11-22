@@ -24,11 +24,11 @@ public class JSONUtils {
      */
     public static <U> U queryJSON(JSONObject source, String query, U defaultObject) {
         if (source == null) {
-            AppLog.e(AppLog.T.UTILS, "Parameter source is null, can't query a null object");
+            AppLog.e(AppLog.UTILS, "Parameter source is null, can't query a null object");
             return defaultObject;
         }
         if (query == null) {
-            AppLog.e(AppLog.T.UTILS, "Parameter query is null");
+            AppLog.e(AppLog.UTILS, "Parameter query is null");
             return defaultObject;
         }
         int nextSeperator = query.indexOf(QUERY_SEPERATOR);
@@ -43,15 +43,15 @@ public class JSONUtils {
                 if (result.getClass().isAssignableFrom(defaultObject.getClass())) {
                     return (U) result;
                 } else {
-                    AppLog.w(AppLog.T.UTILS, String.format("The returned object type %s is not assignable to the type %s. Using default!",
+                    AppLog.w(AppLog.UTILS, String.format("The returned object type %s is not assignable to the type %s. Using default!",
                             result.getClass(),defaultObject.getClass()));
                     return defaultObject;
                 }
             } catch (java.lang.ClassCastException e) {
-                AppLog.e(AppLog.T.UTILS, "Unable to cast the object to " + defaultObject.getClass().getName(), e);
+                AppLog.e(AppLog.UTILS, "Unable to cast the object to " + defaultObject.getClass().getName(), e);
                 return defaultObject;
             } catch (JSONException e) {
-                AppLog.e(AppLog.T.UTILS, "Unable to get the Key from the input object. Key:" + query, e);
+                AppLog.e(AppLog.UTILS, "Unable to get the Key from the input object. Key:" + query, e);
                 return defaultObject;
             }
         }
@@ -75,12 +75,12 @@ public class JSONUtils {
             if (result.getClass().isAssignableFrom(defaultObject.getClass())) {
                 return (U) result;
             } else {
-                AppLog.w(AppLog.T.UTILS, String.format("The returned object type %s is not assignable to the type %s. Using default!",
+                AppLog.w(AppLog.UTILS, String.format("The returned object type %s is not assignable to the type %s. Using default!",
                         result.getClass(),defaultObject.getClass()));
                 return defaultObject;
             }
         } catch (java.lang.ClassCastException e) {
-            AppLog.e(AppLog.T.UTILS, "Unable to cast the object to " + defaultObject.getClass().getName(), e);
+            AppLog.e(AppLog.UTILS, "Unable to cast the object to " + defaultObject.getClass().getName(), e);
             return defaultObject;
         } catch (JSONException e) {
             return defaultObject;
@@ -96,11 +96,11 @@ public class JSONUtils {
      */
     public static <U> U queryJSON(JSONArray source, String query, U defaultObject) {
         if (source == null) {
-            AppLog.e(AppLog.T.UTILS, "Parameter source is null, can't query a null object");
+            AppLog.e(AppLog.UTILS, "Parameter source is null, can't query a null object");
             return defaultObject;
         }
         if (query == null) {
-            AppLog.e(AppLog.T.UTILS, "Parameter query is null");
+            AppLog.e(AppLog.UTILS, "Parameter query is null");
             return defaultObject;
         }
         // query must start with [ have an index and then have ]
@@ -131,19 +131,19 @@ public class JSONUtils {
                 return queryJSON(source.getJSONObject(index), remainingQuery.substring(1), defaultObject);
             } else if (!remainingQuery.equals("")) {
                 // TODO throw an exception since the query isn't valid?
-                AppLog.w(AppLog.T.UTILS, String.format("Incorrect query for next object %s", remainingQuery));
+                AppLog.w(AppLog.UTILS, String.format("Incorrect query for next object %s", remainingQuery));
                 return defaultObject;
             }
             Object result = source.get(index);
             if (result.getClass().isAssignableFrom(defaultObject.getClass())) {
                 return (U) result;
             } else {
-                AppLog.w(AppLog.T.UTILS, String.format("The returned object type %s is not assignable to the type %s. Using default!",
+                AppLog.w(AppLog.UTILS, String.format("The returned object type %s is not assignable to the type %s. Using default!",
                         result.getClass(),defaultObject.getClass()));
                 return defaultObject;
             }
         } catch (java.lang.ClassCastException e) {
-            AppLog.e(AppLog.T.UTILS, "Unable to cast the object to "+defaultObject.getClass().getName(), e);
+            AppLog.e(AppLog.UTILS, "Unable to cast the object to "+defaultObject.getClass().getName(), e);
             return defaultObject;
         } catch (JSONException e) {
             return defaultObject;
@@ -159,7 +159,7 @@ public class JSONUtils {
             try {
                 stringList.add(jsonArray.getString(i));
             } catch (JSONException e) {
-                AppLog.e(AppLog.T.UTILS, e);
+                AppLog.e(AppLog.UTILS, e);
             }
         }
         return stringList;

@@ -5,7 +5,7 @@ import android.support.annotation.StringRes;
 import android.text.Html;
 import android.text.TextUtils;
 
-import me.adanchou.utils.AppLog.T;
+import me.adanchou.utils.LogTag;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -84,7 +84,7 @@ public class StringUtils {
             BigInteger number = new BigInteger(1, messageDigest);
             return number;
         } catch (NoSuchAlgorithmException e) {
-            AppLog.e(T.UTILS, e);
+            AppLog.e(AppLog.UTILS, e);
             return null;
         }
     }

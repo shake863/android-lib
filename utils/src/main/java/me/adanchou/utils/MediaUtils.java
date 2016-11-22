@@ -197,7 +197,7 @@ public class MediaUtils {
             if (imageUri.toString().startsWith("content://")) {
                 input = context.getContentResolver().openInputStream(imageUri);
                 if (input == null) {
-                    AppLog.e(AppLog.T.UTILS, "openInputStream returned null");
+                    AppLog.e(AppLog.UTILS, "openInputStream returned null");
                     return null;
                 }
             } else {
@@ -225,11 +225,11 @@ public class MediaUtils {
 
             return Uri.fromFile(f);
         } catch (FileNotFoundException e) {
-            AppLog.e(AppLog.T.UTILS, e);
+            AppLog.e(AppLog.UTILS, e);
         } catch (MalformedURLException e) {
-            AppLog.e(AppLog.T.UTILS, e);
+            AppLog.e(AppLog.UTILS, e);
         } catch (IOException e) {
-            AppLog.e(AppLog.T.UTILS, e);
+            AppLog.e(AppLog.UTILS, e);
         }
 
         return null;
@@ -262,10 +262,10 @@ public class MediaUtils {
                     mimeType = guessedContentType;
                 }
             } catch (MalformedURLException e) {
-                AppLog.e(AppLog.T.API, "MalformedURLException while trying to guess the content type for the file here " + mediaFile.getPath() + " with URLConnection", e);
+                AppLog.e(AppLog.API, "MalformedURLException while trying to guess the content type for the file here " + mediaFile.getPath() + " with URLConnection", e);
             }
             catch (IOException e) {
-                AppLog.e(AppLog.T.API, "Error while trying to guess the content type for the file here " + mediaFile.getPath() +" with URLConnection", e);
+                AppLog.e(AppLog.API, "Error while trying to guess the content type for the file here " + mediaFile.getPath() +" with URLConnection", e);
             }
         }
 
@@ -279,9 +279,9 @@ public class MediaUtils {
                 }
                 inputStream.close();
             } catch (FileNotFoundException e) {
-                AppLog.e(AppLog.T.API, "FileNotFoundException while trying to guess the content type for the file " + mediaFile.getPath(), e);
+                AppLog.e(AppLog.API, "FileNotFoundException while trying to guess the content type for the file " + mediaFile.getPath(), e);
             } catch (IOException e) {
-                AppLog.e(AppLog.T.API, "IOException while trying to guess the content type for the file " + mediaFile.getPath(), e);
+                AppLog.e(AppLog.API, "IOException while trying to guess the content type for the file " + mediaFile.getPath(), e);
             }
         }
 
@@ -309,7 +309,7 @@ public class MediaUtils {
             }
         } else {
             //No mimetype and no extension!!
-            AppLog.e(AppLog.T.API, "No mimetype and no extension for " + mediaFile.getPath());
+            AppLog.e(AppLog.API, "No mimetype and no extension for " + mediaFile.getPath());
         }
 
         return originalFileName;

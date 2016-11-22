@@ -14,11 +14,14 @@ import java.util.NoSuchElementException;
  * simple wrapper for Android log calls, enables recording and displaying log
  */
 public class AppLog {
-    // T for Tag
-    public enum T {READER, EDITOR, MEDIA, NUX, API, STATS, UTILS, NOTIFS, DB, POSTS, COMMENTS, THEMES, TESTS, PROFILING,
-        SIMPERIUM, SUGGESTION, MAIN, SETTINGS, PLANS, PEOPLE}
 
-    public static final String TAG = "WordPress";
+    public static LogTag NOTIFS     = new LogTag("notifs");
+    public static LogTag UTILS      = new LogTag("utils");
+    public static LogTag PROFILING  = new LogTag("profiling");
+    public static LogTag POSTS      = new LogTag("posts");
+    public static LogTag API        = new LogTag("api");
+
+    public static final String TAG = "AppLog";
     public static final int HEADER_LINE_COUNT = 2;
 
     private static boolean mEnableRecording = false;
@@ -41,7 +44,7 @@ public class AppLog {
      *            It usually identifies the class or activity where the log call occurs.
      * @param message The message you would like logged.
      */
-    public static void v(T tag, String message) {
+    public static void v(LogTag tag, String message) {
         message = StringUtils.notNullStr(message);
         Log.v(TAG + "-" + tag.toString(), message);
         addEntry(tag, LogLevel.v, message);
@@ -53,7 +56,7 @@ public class AppLog {
      *            It usually identifies the class or activity where the log call occurs.
      * @param message The message you would like logged.
      */
-    public static void d(T tag, String message) {
+    public static void d(LogTag tag, String message) {
         message = StringUtils.notNullStr(message);
         Log.d(TAG + "-" + tag.toString(), message);
         addEntry(tag, LogLevel.d, message);
@@ -65,7 +68,7 @@ public class AppLog {
      *            It usually identifies the class or activity where the log call occurs.
      * @param message The message you would like logged.
      */
-    public static void i(T tag, String message) {
+    public static void i(LogTag tag, String message) {
         message = StringUtils.notNullStr(message);
         Log.i(TAG + "-" + tag.toString(), message);
         addEntry(tag, LogLevel.i, message);
@@ -77,7 +80,7 @@ public class AppLog {
      *            It usually identifies the class or activity where the log call occurs.
      * @param message The message you would like logged.
      */
-    public static void w(T tag, String message) {
+    public static void w(LogTag tag, String message) {
         message = StringUtils.notNullStr(message);
         Log.w(TAG + "-" + tag.toString(), message);
         addEntry(tag, LogLevel.w, message);
@@ -89,7 +92,7 @@ public class AppLog {
      *            It usually identifies the class or activity where the log call occurs.
      * @param message The message you would like logged.
      */
-    public static void e(T tag, String message) {
+    public static void e(LogTag tag, String message) {
         message = StringUtils.notNullStr(message);
         Log.e(TAG + "-" + tag.toString(), message);
         addEntry(tag, LogLevel.e, message);
@@ -102,7 +105,7 @@ public class AppLog {
      * @param message The message you would like logged.
      * @param tr An exception to log
      */
-    public static void e(T tag, String message, Throwable tr) {
+    public static void e(LogTag tag, String message, Throwable tr) {
         message = StringUtils.notNullStr(message);
         Log.e(TAG + "-" + tag.toString(), message, tr);
         addEntry(tag, LogLevel.e, message + " - exception: " + tr.getMessage());
@@ -114,7 +117,7 @@ public class AppLog {
      * @param tag Used to identify the source of a log message. It usually identifies the class or activity where the log call occurs.
      * @param tr An exception to log to get StackTrace
      */
-    public static void e(T tag, Throwable tr) {
+    public static void e(LogTag tag, Throwable tr) {
         Log.e(TAG + "-" + tag.toString(), tr.getMessage(), tr);
         addEntry(tag, LogLevel.e, tr.getMessage());
         addEntry(tag, LogLevel.e, "StackTrace: " + getStringStackTrace(tr));
@@ -126,7 +129,7 @@ public class AppLog {
      * @param volleyErrorMsg
      * @param statusCode
      */
-    public static void e(T tag, String volleyErrorMsg, int statusCode) {
+    public static void e(LogTag tag, String volleyErrorMsg, int statusCode) {
         if (TextUtils.isEmpty(volleyErrorMsg)) {
             return;
         }
@@ -166,9 +169,9 @@ public class AppLog {
     private static class LogEntry {
         LogLevel mLogLevel;
         String mLogText;
-        T mLogTag;
+        LogTag mLogTag;
 
-        public LogEntry(LogLevel logLevel, String logText, T logTag) {
+        public LogEntry(LogLevel logLevel, String logText, LogTag logTag) {
             mLogLevel = logLevel;
             mLogText = logText;
             if (mLogText == null) {
@@ -213,7 +216,7 @@ public class AppLog {
 
     private static LogEntryList mLogEntries = new LogEntryList();
 
-    private static void addEntry(T tag, LogLevel level, String text) {
+    private static void addEntry(LogTag tag, LogLevel level, String text) {
         // skip if recording is disabled (default)
         if (!mEnableRecording) {
             return;

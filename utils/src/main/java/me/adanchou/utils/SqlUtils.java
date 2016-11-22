@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDoneException;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteStatement;
 
-import me.adanchou.utils.AppLog.T;
+import me.adanchou.utils.LogTag;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -136,7 +136,7 @@ public class SqlUtils {
         if (text.length() <= MAX_TEXT_LEN) {
             return text;
         }
-        AppLog.w(T.UTILS, "sqlite > max text exceeded, storing truncated text");
+        AppLog.w(AppLog.UTILS, "sqlite > max text exceeded, storing truncated text");
         return text.substring(0, MAX_TEXT_LEN);
     }
 }

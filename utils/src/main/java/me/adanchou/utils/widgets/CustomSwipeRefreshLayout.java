@@ -6,6 +6,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 
 import me.adanchou.utils.AppLog;
+import me.adanchou.utils.LogTag;
 
 public class CustomSwipeRefreshLayout extends SwipeRefreshLayout {
     public CustomSwipeRefreshLayout(Context context) {
@@ -25,7 +26,7 @@ public class CustomSwipeRefreshLayout extends SwipeRefreshLayout {
             // Catch IllegalArgumentException which can be fired by the underlying SwipeRefreshLayout.onTouchEvent()
             // method.
             // When android support-v4 fixes it, we'll have to remove that custom layout completely.
-            AppLog.e(AppLog.T.UTILS, e);
+            AppLog.e(AppLog.UTILS, e);
             return true;
         }
     }

@@ -13,6 +13,7 @@ import com.android.volley.toolbox.ImageLoader;
 import java.lang.ref.WeakReference;
 
 import me.adanchou.utils.AppLog;
+import me.adanchou.utils.LogTag;
 import me.adanchou.utils.PhotonUtils;
 
 /**
@@ -84,12 +85,12 @@ public class WPImageGetter implements Html.ImageGetter {
             @Override
             public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
                 if (response.getBitmap() == null) {
-                    AppLog.w(AppLog.T.UTILS, "WPImageGetter null bitmap");
+                    AppLog.w(AppLog.UTILS, "WPImageGetter null bitmap");
                 }
 
                 TextView view = getView();
                 if (view == null) {
-                    AppLog.w(AppLog.T.UTILS, "WPImageGetter view is invalid");
+                    AppLog.w(AppLog.UTILS, "WPImageGetter view is invalid");
                     return;
                 }
 

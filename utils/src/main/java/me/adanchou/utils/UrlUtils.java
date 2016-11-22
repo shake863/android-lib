@@ -5,7 +5,7 @@ import android.text.TextUtils;
 import android.webkit.MimeTypeMap;
 import android.webkit.URLUtil;
 
-import me.adanchou.utils.AppLog.T;
+import me.adanchou.utils.LogTag;
 
 import java.io.UnsupportedEncodingException;
 import java.net.IDN;
@@ -74,7 +74,7 @@ public class UrlUtils {
                 if (scheme.endsWith("://")){
                     url = scheme + url;
                 } else {
-                    AppLog.e(T.UTILS, "Invalid scheme used: " + scheme);
+                    AppLog.e(AppLog.UTILS, "Invalid scheme used: " + scheme);
                 }
             }
         }

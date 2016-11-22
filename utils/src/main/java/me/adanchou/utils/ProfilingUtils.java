@@ -2,7 +2,7 @@ package me.adanchou.utils;
 
 import android.os.SystemClock;
 
-import me.adanchou.utils.AppLog.T;
+import me.adanchou.utils.LogTag;
 
 import java.util.ArrayList;
 
@@ -72,16 +72,16 @@ public class ProfilingUtils {
         if (mLabel == null) {
             return;
         }
-        AppLog.d(T.PROFILING, mLabel + ": begin");
+        AppLog.d(AppLog.PROFILING, mLabel + ": begin");
         final long first = mSplits.get(0);
         long now = first;
         for (int i = 1; i < mSplits.size(); i++) {
             now = mSplits.get(i);
             final String splitLabel = mSplitLabels.get(i);
             final long prev = mSplits.get(i - 1);
-            AppLog.d(T.PROFILING, mLabel + ":      " + (now - prev) + " ms, " + splitLabel);
+            AppLog.d(AppLog.PROFILING, mLabel + ":      " + (now - prev) + " ms, " + splitLabel);
         }
-        AppLog.d(T.PROFILING, mLabel + ": end, " + (now - first) + " ms");
+        AppLog.d(AppLog.PROFILING, mLabel + ": end, " + (now - first) + " ms");
     }
 }
 

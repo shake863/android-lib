@@ -65,7 +65,7 @@ public class DeviceUtils {
                 model = decodedModel;
             }
         } catch (IOException e) {
-            AppLog.e(AppLog.T.UTILS, e.getMessage());
+            AppLog.e(AppLog.UTILS, e.getMessage());
         }
 
         if (model == null) {  //Device model not found in the list

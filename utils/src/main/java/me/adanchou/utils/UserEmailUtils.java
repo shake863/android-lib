@@ -5,7 +5,7 @@ import android.accounts.AccountManager;
 import android.content.Context;
 import android.util.Patterns;
 
-import me.adanchou.utils.AppLog.T;
+import me.adanchou.utils.LogTag;
 
 import java.util.regex.Pattern;
 
@@ -31,7 +31,7 @@ public class UserEmailUtils {
             return "";
         } catch (SecurityException e) {
             // exception will occur if app doesn't have GET_ACCOUNTS permission
-            AppLog.e(T.UTILS, "SecurityException - missing GET_ACCOUNTS permission");
+            AppLog.e(AppLog.UTILS, "SecurityException - missing GET_ACCOUNTS permission");
             return "";
         }
     }
