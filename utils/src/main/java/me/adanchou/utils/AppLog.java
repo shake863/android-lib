@@ -20,6 +20,7 @@ public class AppLog {
     public static LogTag PROFILING  = new LogTag("profiling");
     public static LogTag POSTS      = new LogTag("posts");
     public static LogTag API        = new LogTag("api");
+    public static LogTag DB        = new LogTag("db");
 
     public static final String TAG = "AppLog";
     public static final int HEADER_LINE_COUNT = 2;
