@@ -6,7 +6,9 @@ import android.text.format.DateUtils;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.TimeZone;
 
@@ -242,5 +244,29 @@ public class DateTimeUtils {
     public static String timeSpanFromTimestamp(long timestamp, Context context) {
         Date dateGMT = dateFromTimestamp(timestamp);
         return javaDateToTimeSpan(dateGMT, context);
+    }
+
+    public static String dateSpanShow(final Date date, Context context) {
+
+        GregorianCalendar calendar = new GregorianCalendar();
+        int today = calendar.get(Calendar.DAY_OF_YEAR);
+        calendar.add(Calendar.DAY_OF_YEAR, -1);
+        int yestoday = calendar.get(Calendar.DAY_OF_YEAR);
+
+        calendar.setTime(date);
+        int passday = calendar.get(Calendar.DAY_OF_YEAR);
+
+        if (today == passday) {
+            return context.getString(R.string.today);
+        }
+
+        // 昨天
+        if (yestoday == passday) {
+            return context.getString(R.string.yestoday);
+        }
+
+        // 日期
+        return calendar.get(Calendar.YEAR) + "-" + calendar.get(Calendar.MONTH) + "-"
+                + calendar.get(Calendar.DAY_OF_MONTH);
     }
 }

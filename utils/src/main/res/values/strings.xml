@@ -2,4 +2,6 @@
 <resources>
     <string name="no_network_message">网络不给力啊</string>
     <string name="timespan_now">现在</string>
+    <string name="today">今天</string>
+    <string name="yestoday">昨天</string>
 </resources>
