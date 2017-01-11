@@ -197,6 +197,14 @@ public class DateTimeUtils {
         return dt1.getYear() == dt2.getYear() && dt1.getMonth() == dt2.getMonth();
     }
 
+    public static boolean isSameYMD(Date dt1, Date dt2) {
+        if (dt1 == null || dt2 == null) {
+            return false;
+        }
+        return dt1.getYear() == dt2.getYear() && dt1.getMonth() == dt2.getMonth()
+                && dt1.getDate() == dt2.getDate();
+    }
+
     // Routines involving Unix timestamps (GMT assumed)
 
     /**
