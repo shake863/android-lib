@@ -194,6 +194,14 @@ public class UrlUtils {
         return "https:" + urlString.substring(5, urlString.length());
     }
 
+    public static String changeDomain(final String urlString, final String domain) {
+
+        Uri.Builder uriBuilder = Uri.parse(urlString).buildUpon();
+        uriBuilder.authority(domain);
+        return uriBuilder.build().toString();
+
+    }
+
     /**
      * see http://stackoverflow.com/a/8591230/1673548
      */
