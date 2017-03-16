@@ -106,6 +106,16 @@ public class StringUtils {
         }
     }
 
+    public static Boolean isMobile(String mobile) {
+
+        if (mobile.length() == 11 && mobile.substring(0, 1).equals("1") &&
+                TextUtils.isDigitsOnly(mobile)) {
+            return true;
+        }
+
+        return false;
+    }
+
     /*
      * nbradbury - adapted from Html.escapeHtml(), which was added in API Level 16
      * TODO: not thoroughly tested yet, so marked as private - not sure I like the way
